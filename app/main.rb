@@ -1,61 +1,11 @@
-# App Verification Package Client
+require 'json'
+require 'net/http'
+require 'library'
+require_relative '../Library/lib/AppVerificationPackageClient'
+require_relative '../Library/lib/helpers/EnvironmentType'
+require_relative '../Library/lib/clients/AddressNameVerificationClient'
 
-A Ruby client for consuming the Microbilt App Verification Package APIs.
 
-For more about APIs You can see on [Microbilt Developer Portal](https://developer.microbilt.com/)
-
-## APIs in this plan:
-[AddressNameVerification](https://developer.microbilt.com/api/AddressNameVerification)
-
-[ABAAcctVerification](https://developer.microbilt.com/api/AddressStandardization)
-
-[DeathMasterFileValidation](https://developer.microbilt.com/api/DeathMasterFileValidation)
-
-[DLVerify](https://developer.microbilt.com/api/DLVerify)
-
-[EmailValidation](https://developer.microbilt.com/api/EmailValidation)
-
-[IPAddressInfo](https://developer.microbilt.com/api/IPAddressInfo)
-
-[OFACWatchlistSearch](https://developer.microbilt.com/api/OFACWatchlistSearch)
-
-[PhoneAddressVerification](https://developer.microbilt.com/api/PhoneAddressVerification)
-
-[PhoneNameVerification](https://developer.microbilt.com/api/PhoneNameVerification)
-
-[SSNAddressVerification](https://developer.microbilt.com/api/SSNAddressVerification)
-
-[SSNNameVerification](https://developer.microbilt.com/api/SSNNameVerification)
-
-[SSNPhoneVerification](https://developer.microbilt.com/api/SSNPhoneVerification)
-
-[SSNValidation](https://developer.microbilt.com/api/SSNValidation)
-
-# Installation
-
-`composer require Microbilt/App-Verification-Package-Ruby`
-
-# Quick Start
-
-```
-app_verification_package_client = AppVerificationPackage::AppVerificationPackageClient.new("You_client_id", "You_client_secret")
-```
-# Configuration
-
-`client_id` required
-
-`client_secret` required
-
-`EnvironmentType` optional (defaults to Production). Other option is Sandbox. 
-
-# Usage
-For usage you need create plan client with you credentials
-All APIs implemented like property in ```AppVerificationPackageClient``` class 
-```app_verification_package_client.address_name_verification_client.get_report("You request body in JSON format")```
-
-## More usage with test call APIs from plan:
-
-```
 app_verification_package_client = AppVerificationPackage::AppVerificationPackageClient.new("You_client_id", "You_client_secret", EnvironmentType::Sandbox)
 
 puts "AddressNameVerification API call:"
@@ -307,4 +257,3 @@ report_request_json = report_request.to_json
 
 response = app_verification_package_client.ssn_validation_client.get_report(report_request_json)
 puts response
-```
